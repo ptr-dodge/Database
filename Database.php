@@ -7,6 +7,7 @@ class Database
     public string $password = "";
     public string $database_name = "";
     public string $table_name = "";
+    public bool $verbose = false;
     public $connection;
 
     function __construct($host, $username, $password, $database_name, $table_name)
@@ -31,7 +32,9 @@ class Database
 
     function console_log($error_message)
     {
-        echo '<script>console.log("' . $error_message . '")</script>';
+        if ($this->verbose) {
+            echo '<script>console.log("' . $error_message . '")</script>';
+        }
     }
 
     function connect()
